@@ -6,7 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # 1. upstream 리모트가 없으면 추가
 if ! git remote get-url upstream &>/dev/null; then
   echo "Adding upstream remote..."
-  git remote add upstream git@github.com:NixOS/nixpkgs.git
+  git remote add upstream https://github.com/NixOS/nixpkgs.git
 fi
 
 # 2. UPSTREAM_BRANCH 검증
