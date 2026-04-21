@@ -15,8 +15,8 @@ if [[ -z "${UPSTREAM_BRANCH:-}" ]]; then
   exit 1
 fi
 
-if [[ "$UPSTREAM_BRANCH" == "main" ]]; then
-  echo "Error: UPSTREAM_BRANCH cannot be 'main'" >&2
+if [[ "$UPSTREAM_BRANCH" == "main" || "$UPSTREAM_BRANCH" == "empty" ]]; then
+  echo "Error: UPSTREAM_BRANCH cannot be 'main' or 'empty'" >&2
   exit 1
 fi
 
@@ -25,10 +25,13 @@ if ! git fetch --depth 1 upstream "$UPSTREAM_BRANCH"; then
   exit 1
 fi
 
-# 3. 로컬 브랜치가 없으면 생성
-if ! git show-ref --verify --quiet "refs/heads/$UPSTREAM_BRANCH"; then
-  echo "Creating local branch '$UPSTREAM_BRANCH'..."
-  git branch "$UPSTREAM_BRANCH" empty
+# 3. 로컬 브랜치 생성
+if git fetch origin "$UPSTREAM_BRANCH" 2>/dev/null; then
+  echo "Creating local branch '$UPSTREAM_BRANCH' from origin..."
+  git branch "$UPSTREAM_BRANCH" "origin/$UPSTREAM_BRANCH"
+else
+  echo "Creating local branch '$UPSTREAM_BRANCH' from empty..."
+  git branch "$UPSTREAM_BRANCH" origin/empty
 fi
 
 # 4. sanitize.sh를 임시 파일로 복사 (checkout하면 사라지므로)
