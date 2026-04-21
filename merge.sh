@@ -20,9 +20,7 @@ if [[ "$UPSTREAM_BRANCH" == "main" ]]; then
   exit 1
 fi
 
-git fetch upstream
-
-if ! git ls-remote --heads upstream "$UPSTREAM_BRANCH" | grep -q "$UPSTREAM_BRANCH"; then
+if ! git fetch --depth 1 upstream "$UPSTREAM_BRANCH"; then
   echo "Error: Branch '$UPSTREAM_BRANCH' does not exist on upstream remote" >&2
   exit 1
 fi
