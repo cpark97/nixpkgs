@@ -33,7 +33,12 @@ if ! git show-ref --verify --quiet "refs/heads/$UPSTREAM_BRANCH"; then
   git branch "$UPSTREAM_BRANCH" "upstream/$UPSTREAM_BRANCH"
 fi
 
-# 4 & 5. upstream 브랜치를 로컬에 머지 (conflict 시 theirs 적용)
+# 4. sanitize.sh를 임시 파일로 복사 (checkout하면 사라지므로)
+SANITIZE_TMP="$(mktemp)"
+cp "$SCRIPT_DIR/sanitize.sh" "$SANITIZE_TMP"
+trap 'rm -f "$SANITIZE_TMP"' EXIT
+
+# 5 & 6. upstream 브랜치를 로컬에 머지 (conflict 시 theirs 적용)
 echo "Merging upstream/$UPSTREAM_BRANCH into $UPSTREAM_BRANCH..."
 git checkout "$UPSTREAM_BRANCH"
 if ! git merge "upstream/$UPSTREAM_BRANCH" --no-edit; then
@@ -43,11 +48,11 @@ if ! git merge "upstream/$UPSTREAM_BRANCH" --no-edit; then
   git commit --no-edit
 fi
 
-# 6. sanitize.sh 실행
+# 7. sanitize.sh 실행
 echo "Running sanitize.sh..."
-bash "$SCRIPT_DIR/sanitize.sh"
+bash "$SANITIZE_TMP"
 
-# 7. 변경사항이 있으면 마지막 커밋에 amend
+# 8. 변경사항이 있으면 마지막 커밋에 amend
 if [[ -n "$(git status --porcelain)" ]]; then
   echo "Amending last commit with sanitize changes..."
   git add -A
