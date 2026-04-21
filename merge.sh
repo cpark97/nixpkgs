@@ -39,7 +39,7 @@ trap 'rm -f "$SANITIZE_TMP"' EXIT
 # 5. upstream tree 스냅샷으로 교체 (merge commit 없이)
 echo "Syncing $UPSTREAM_BRANCH to upstream/$UPSTREAM_BRANCH via read-tree..."
 git checkout "$UPSTREAM_BRANCH"
-git read-tree --reset -u "upstream/$UPSTREAM_BRANCH"
+git restore --source="upstream/$UPSTREAM_BRANCH" --staged --worktree :/
 
 # 6. sanitize.sh 실행
 echo "Running sanitize.sh..."
