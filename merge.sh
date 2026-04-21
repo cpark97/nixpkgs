@@ -38,23 +38,20 @@ SANITIZE_TMP="$(mktemp)"
 cp "$SCRIPT_DIR/sanitize.sh" "$SANITIZE_TMP"
 trap 'rm -f "$SANITIZE_TMP"' EXIT
 
-# 5 & 6. upstream 브랜치를 로컬에 머지 (conflict 시 theirs 적용)
-echo "Merging upstream/$UPSTREAM_BRANCH into $UPSTREAM_BRANCH..."
+# 5. upstream tree 스냅샷으로 교체 (merge commit 없이)
+echo "Syncing $UPSTREAM_BRANCH to upstream/$UPSTREAM_BRANCH via read-tree..."
 git checkout "$UPSTREAM_BRANCH"
-if ! git merge "upstream/$UPSTREAM_BRANCH" --no-edit; then
-  echo "Merge conflict detected, resolving with theirs..."
-  git checkout --theirs .
-  git add -A
-  git commit --no-edit
-fi
+git read-tree --reset -u "upstream/$UPSTREAM_BRANCH"
 
-# 7. sanitize.sh 실행
+# 6. sanitize.sh 실행
 echo "Running sanitize.sh..."
 bash "$SANITIZE_TMP"
 
-# 8. 변경사항이 있으면 마지막 커밋에 amend
-if [[ -n "$(git status --porcelain)" ]]; then
-  echo "Amending last commit with sanitize changes..."
-  git add -A
-  git commit --amend --no-edit
+# 7. 변경사항이 있으면 새 커밋 생성
+git add -A
+if ! git diff --cached --quiet; then
+  UPSTREAM_SHA=$(git rev-parse "upstream/$UPSTREAM_BRANCH")
+  git commit -m "sync $UPSTREAM_BRANCH $UPSTREAM_SHA"
+else
+  echo "Already up to date"
 fi
