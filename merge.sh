@@ -28,7 +28,7 @@ fi
 # 3. 로컬 브랜치가 없으면 생성
 if ! git show-ref --verify --quiet "refs/heads/$UPSTREAM_BRANCH"; then
   echo "Creating local branch '$UPSTREAM_BRANCH'..."
-  git branch "$UPSTREAM_BRANCH" "upstream/$UPSTREAM_BRANCH"
+  git branch "$UPSTREAM_BRANCH" empty
 fi
 
 # 4. sanitize.sh를 임시 파일로 복사 (checkout하면 사라지므로)
