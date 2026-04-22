@@ -1,6 +1,8 @@
 name: Merge Upstream Branch
 
 on:
+  schedule:
+    - cron: '0 20 * * *'
   workflow_dispatch:
     inputs:
       upstream_branch:
@@ -9,6 +11,9 @@ on:
         type: choice
         options:
           - nixos-unstable
+
+env:
+  UPSTREAM_BRANCH: ${{ inputs.upstream_branch || 'nixos-unstable' }}
 
 concurrency:
   group: merge-upstream
@@ -30,8 +35,8 @@ jobs:
 
       - name: Run merge.sh
         env:
-          UPSTREAM_BRANCH: ${{ inputs.upstream_branch }}
+          UPSTREAM_BRANCH: ${{ env.UPSTREAM_BRANCH }}
         run: bash merge.sh
 
       - name: Push changes
-        run: git push origin "${{ inputs.upstream_branch }}"
+        run: git push origin "${{ env.UPSTREAM_BRANCH }}"
