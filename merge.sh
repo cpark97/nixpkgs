@@ -31,6 +31,7 @@ if git fetch origin "$UPSTREAM_BRANCH" 2>/dev/null; then
   git branch "$UPSTREAM_BRANCH" "origin/$UPSTREAM_BRANCH"
 else
   echo "Creating local branch '$UPSTREAM_BRANCH' from empty..."
+  git fetch origin empty
   git branch "$UPSTREAM_BRANCH" origin/empty
 fi
 
