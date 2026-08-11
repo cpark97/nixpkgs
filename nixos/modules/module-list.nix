@@ -357,6 +357,7 @@
   ./programs/wayland/gtklock.nix
   ./programs/wayland/hyprland.nix
   ./programs/wayland/hyprlock.nix
+  ./programs/wayland/kanshi.nix
   ./programs/wayland/labwc.nix
   ./programs/wayland/mango.nix
   ./programs/wayland/miracle-wm.nix
@@ -637,6 +638,7 @@
   ./services/display-managers/greetd.nix
   ./services/display-managers/lemurs.nix
   ./services/display-managers/ly.nix
+  ./services/display-managers/noctalia-greeter.nix
   ./services/display-managers/plasma-login-manager.nix
   ./services/display-managers/regreet.nix
   ./services/display-managers/sddm.nix
@@ -1497,6 +1499,7 @@
   ./services/networking/xrdp.nix
   ./services/networking/yggdrasil-jumper.nix
   ./services/networking/yggdrasil.nix
+  ./services/networking/zapret2.nix
   ./services/networking/zapret.nix
   ./services/networking/zenohd.nix
   ./services/networking/zerobin.nix

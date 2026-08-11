@@ -1411,6 +1411,8 @@ self: super: with self; {
 
   asserts = callPackage ../development/python-modules/asserts { };
 
+  ast-grep-cli = callPackage ../development/python-modules/ast-grep-cli { };
+
   ast-grep-py = callPackage ../development/python-modules/ast-grep-py { };
 
   ast-serialize = callPackage ../development/python-modules/ast-serialize { };
@@ -2656,7 +2658,7 @@ self: super: with self; {
 
   brother = callPackage ../development/python-modules/brother { };
 
-  brother-ql = callPackage ../development/python-modules/brother-ql { };
+  brother-ql-next = callPackage ../development/python-modules/brother-ql-next { };
 
   brotli = callPackage ../development/python-modules/brotli {
     inherit (pkgs) brotli;
@@ -2729,8 +2731,6 @@ self: super: with self; {
   bump-my-version = callPackage ../development/python-modules/bump-my-version { };
 
   bump2version = callPackage ../development/python-modules/bump2version { };
-
-  bumpfontversion = callPackage ../development/python-modules/bumpfontversion { };
 
   bumps = callPackage ../development/python-modules/bumps { };
 
@@ -4214,6 +4214,8 @@ self: super: with self; {
 
   deepsearch-toolkit = callPackage ../development/python-modules/deepsearch-toolkit { };
 
+  deepspeed = callPackage ../development/python-modules/deepspeed { };
+
   deeptoolsintervals = callPackage ../development/python-modules/deeptoolsintervals { };
 
   deepwave = callPackage ../development/python-modules/deepwave { };
@@ -4343,8 +4345,6 @@ self: super: with self; {
   dict2xml = callPackage ../development/python-modules/dict2xml { };
 
   dictdiffer = callPackage ../development/python-modules/dictdiffer { };
-
-  dictionaries = callPackage ../development/python-modules/dictionaries { };
 
   dicttoxml = callPackage ../development/python-modules/dicttoxml { };
 
@@ -6758,6 +6758,8 @@ self: super: with self; {
   gflags = callPackage ../development/python-modules/gflags { };
 
   gflanguages = callPackage ../development/python-modules/gflanguages { };
+
+  gfmetadata = callPackage ../development/python-modules/gfmetadata { };
 
   gfsubsets = callPackage ../development/python-modules/gfsubsets { };
 
@@ -11480,8 +11482,6 @@ self: super: with self; {
 
   mysqlclient = callPackage ../development/python-modules/mysqlclient { };
 
-  myst-docutils = callPackage ../development/python-modules/myst-docutils { };
-
   myst-nb = callPackage ../development/python-modules/myst-nb { };
 
   myst-parser = callPackage ../development/python-modules/myst-parser { };
@@ -11592,6 +11592,8 @@ self: super: with self; {
   nbxmpp = callPackage ../development/python-modules/nbxmpp { };
 
   nc-dnsapi = callPackage ../development/python-modules/nc-dnsapi { };
+
+  nccl4py = callPackage ../development/python-modules/nccl4py { };
 
   ncclient = callPackage ../development/python-modules/ncclient { };
 
@@ -13198,6 +13200,8 @@ self: super: with self; {
 
   phonopy = callPackage ../development/python-modules/phonopy { };
 
+  phonors = callPackage ../development/python-modules/phonors { };
+
   photutils = callPackage ../development/python-modules/photutils { };
 
   phply = callPackage ../development/python-modules/phply { };
@@ -13484,6 +13488,8 @@ self: super: with self; {
   pluralizer = callPackage ../development/python-modules/pluralizer { };
 
   pluthon = callPackage ../development/python-modules/pluthon { };
+
+  pluto = callPackage ../development/python-modules/pluto { };
 
   plux = callPackage ../development/python-modules/plux { };
 
@@ -16082,6 +16088,8 @@ self: super: with self; {
 
   pytaglib = callPackage ../development/python-modules/pytaglib { };
 
+  pytango = callPackage ../development/python-modules/pytango { };
+
   pytankerkoenig = callPackage ../development/python-modules/pytankerkoenig { };
 
   pytap2 = callPackage ../development/python-modules/pytap2 { };
@@ -16964,8 +16972,6 @@ self: super: with self; {
 
   python-zaqarclient = callPackage ../development/python-modules/python-zaqarclient { };
 
-  python-zbar = callPackage ../development/python-modules/python-zbar { };
-
   python-zunclient = callPackage ../development/python-modules/python-zunclient { };
 
   python3-application = callPackage ../development/python-modules/python3-application { };
@@ -17374,6 +17380,8 @@ self: super: with self; {
   qualysclient = callPackage ../development/python-modules/qualysclient { };
 
   quandl = callPackage ../development/python-modules/quandl { };
+
+  quango = callPackage ../development/python-modules/quango { };
 
   quantile-forest = callPackage ../development/python-modules/quantile-forest { };
 
@@ -18871,6 +18879,8 @@ self: super: with self; {
   smart-open = callPackage ../development/python-modules/smart-open { };
 
   smarthab = callPackage ../development/python-modules/smarthab { };
+
+  smartthings-local = callPackage ../development/python-modules/smartthings-local { };
 
   smartypants = callPackage ../development/python-modules/smartypants { };
 
@@ -22639,7 +22649,11 @@ self: super: with self; {
 
   zammad-py = callPackage ../development/python-modules/zammad-py { };
 
+  zapf = callPackage ../development/python-modules/zapf { };
+
   zarr = callPackage ../development/python-modules/zarr { };
+
+  zbar = callPackage ../development/python-modules/zbar { };
 
   zc-buildout = callPackage ../development/python-modules/zc-buildout { };
 
