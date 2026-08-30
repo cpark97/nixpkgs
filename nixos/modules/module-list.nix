@@ -237,6 +237,7 @@
   ./programs/gnome-disks.nix
   ./programs/gnome-terminal.nix
   ./programs/gnupg.nix
+  ./programs/google-chrome.nix
   ./programs/gpaste.nix
   ./programs/gphoto2.nix
   ./programs/gpu-screen-recorder.nix
@@ -1842,6 +1843,7 @@
   ./services/web-apps/sogo.nix
   ./services/web-apps/speedtest-tracker.nix
   ./services/web-apps/sshwifty.nix
+  ./services/web-apps/sstorytime.nix
   ./services/web-apps/stash.nix
   ./services/web-apps/stirling-pdf.nix
   ./services/web-apps/strfry.nix
